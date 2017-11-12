@@ -1,0 +1,71 @@
+# CryptOS: Live OS for cryptocurrencies
+
+- Live operating system (run from DVD or USB stick).
+
+- Relevant tools for cryptocurrencies available.
+
+- Use on an offline computer.
+
+- Inspired by BitKey.
+
+- Based on the amazing NixOS.
+
+- Runs KDE by default.
+
+## Instructions
+
+These are just a preliminary sketch and there are also other ways to use:
+
+1. Use public keys on an online computer to create the transactions.
+
+2. Open an offline computer running CryptOS with the private keys or the wallet
+   encrypted on a USB stick.
+
+3. Sign the transactions on CryptOS, save to the USB stick.
+
+4. Optionally, check the transaction using some application on your online
+   computer or mobile phone. If you do this, you don't basically need to trust
+   CryptOS.
+
+5. Broadcast the transaction on the online computer.
+
+NOTE: The private keys can be stored encrypted on the online computer and
+multiple places for backup, but never decrypt them on an online computer. Only
+decrypt on the offline computer.
+
+
+## Description
+
+Available cryptocurrency applications:
+
+- Electrum
+- Monero command-line wallet
+- more to come...
+
+## Building
+
+It is recommended to build the ISO image yourself. You can easily even modify
+`iso.nix` to suit your needs. But if you want, you can download a pre-built ISO
+image from Releases section.
+ 
+Requirement: nix installed.
+
+Clone this repo and inside the directory, run:
+
+```
+nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=iso.nix
+```
+
+The ISO image can be found in `result/iso/`. Burn the image to a USB stick.
+
+TODO: How to force building all packages from sources? Would it improve
+security in some way?
+
+
+## TODO
+
+- Disable internet interfaces.
+
+- Add relevant packages. If something is missing from nixpkgs, contribute to upstream.
+
+Contributions are most welcome! Just open issues or make pull requests.
