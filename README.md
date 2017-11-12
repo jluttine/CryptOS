@@ -56,7 +56,12 @@ Clone this repo and inside the directory, run:
 nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=iso.nix
 ```
 
-The ISO image can be found in `result/iso/`. Burn the image to a USB stick.
+The ISO image can be found in `result/iso/`. Unmount the device you want to
+flash the image into. Flash the image to a USB stick:
+
+```
+sudo dd bs=4M if=result/iso/<ISO-FILE-NAME> of=/dev/<USB-DEVICE-ID>
+```
 
 TODO: How to force building all packages from sources? Would it improve
 security in some way?
