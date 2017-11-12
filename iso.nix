@@ -16,6 +16,16 @@ with lib;
   #isoImage.isoName = "${config.isoImage.isoBaseName}-${config.system.nixosLabel}-${pkgs.stdenv.system}.iso";
   isoImage.volumeID = substring 0 11 "CRYPTOS_ISO";
 
+  services.xserver = {
+    enable = true;
+    displayManager.sddm.enable = true;
+    desktopManager.plasma5.enable = true;
+    synaptics = {
+      enable = true;
+      twoFingerScroll = true;
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     electrum
     monero
