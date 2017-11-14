@@ -8,9 +8,6 @@ with lib;
     # Support as many devices as possible
     <nixpkgs/nixos/modules/profiles/all-hardware.nix>
 
-    # Install KDE Plasma
-    <nixpkgs/nixos/modules/profiles/graphical.nix>
-
     <nixpkgs/nixos/modules/installer/cd-dvd/iso-image.nix>
     #<nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
 
@@ -30,8 +27,25 @@ with lib;
   # USB booting
   isoImage.makeUsbBootable = true;
 
-  # Add Memtest86+ to the CD.
-  #boot.loader.grub.memtest86.enable = true;
+  services.xserver = {
+    enable = true;
+
+    # Automatically login as root.
+    displayManager.slim = {
+      enable = true;
+      defaultUser = "root";
+      autoLogin = true;
+    };
+
+    # Use KDE
+    desktopManager.plasma5 = {
+      enable = true;
+      enableQt4Support = false;
+    };
+
+    # Enable touchpad support for many laptops.
+    synaptics.enable = true;
+  };
 
   # Disable networking
   networking = {
@@ -40,6 +54,10 @@ with lib;
     useDHCP = false;
     interfaces = {};
   };
+
+  # KDE complains if power management is disabled (to be precise, if
+  # there is no power management backend such as upower).
+  powerManagement.enable = true;
 
   # Allow the user to log in as root without a password.
   users.extraUsers.root.initialHashedPassword = "";
