@@ -1,30 +1,33 @@
 # This module defines a small NixOS installation CD.  It does not
 # contain any graphical stuff.
 {lib, config, pkgs, ...}:
-with lib;
+let
+  # Version ID contains the commit ID of this repo and the version ID of NixOS.
+  gitCommitId  = lib.substring 0 7 (lib.commitIdFromGitRepo ./.git);
+  version = "0.0.git.${gitCommitId}-${config.system.nixosVersion}";
+in
 {
   imports = [
 
     # Support as many devices as possible
     <nixpkgs/nixos/modules/profiles/all-hardware.nix>
 
+    # ISO image stuff
     <nixpkgs/nixos/modules/installer/cd-dvd/iso-image.nix>
-    #<nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
 
-    # Provide an initial copy of the NixOS channel so that the user
-    # doesn't need to run "nix-channel --update" first.
-    #<nixpkgs/nixos/modules/installer/cd-dvd/channel.nix>
   ];
 
+
+  #system.nixosLabel = "${gitCommitId}-${config.system.nixosVersion}";
   # ISO naming.
-  isoImage.isoBaseName = "cryptos";
+  #isoImage.isoBaseName = "cryptos";
   #isoImage.isoName = "${config.isoImage.isoBaseName}-${config.system.nixosLabel}-${pkgs.stdenv.system}.iso";
-  isoImage.volumeID = substring 0 11 "CRYPTOS_ISO";
+  isoImage.isoName = "cryptos-${version}-${pkgs.stdenv.system}.iso";
+  isoImage.volumeID = lib.substring 0 11 "CRYPTOS_ISO";
+  isoImage.appendToMenuLabel = " Live System";
 
-  # EFI booting
+  # EFI and USB booting
   isoImage.makeEfiBootable = true;
-
-  # USB booting
   isoImage.makeUsbBootable = true;
 
   services.xserver = {
@@ -67,7 +70,18 @@ with lib;
     sha256 = "43fd8ad5decf6c23c87e9026170a13588c2eba249d9013cb9f888da5e2002217";
   };
 
-  isoImage.appendToMenuLabel = " Live System";
+  # Generate /etc/os-release.  See
+  # https://www.freedesktop.org/software/systemd/man/os-release.html for the
+  # format.
+  environment.etc."os-release".text =
+    ''
+      NAME=CryptOS
+      ID=cryptos
+      VERSION="${version}"
+      VERSION_CODENAME=${version}
+      VERSION_ID="${version}"
+      PRETTY_NAME="CryptOS ${version}"
+    '';
 
   environment.systemPackages = with pkgs; [
     electrum
