@@ -1,4 +1,4 @@
-# CryptOS: Secure live offline OS for cryptocurrencies
+# CryptOS: Live offline OS for cryptocurrencies
 
 - Run directly from a DVD or USB stick securely without internet
   connection.
@@ -86,10 +86,17 @@ sudo dd bs=4M if=result/iso/<ISO-FILE-NAME> of=/dev/<USB-DEVICE-ID>
 
 ## TODO
 
-- Add relevant packages. If something is missing from nixpkgs, contribute to upstream.
+- Add relevant packages. If something is missing from nixpkgs, contribute to
+  upstream.
 
 - How to force building all packages from sources? Would it improve security in
   some way?
+
+
+## Disclaimer
+
+No guarantees about the security of the software is given. Use it at your own
+risk.
 
 
 ## Contributing
