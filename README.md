@@ -15,12 +15,12 @@
 
 ## Instructions
 
-These steps provide preliminary sketcing of one way to use CryptOS:
+The following sketched steps explain one way to use CryptOS:
 
-1. Use public keys on an online computer to create the transactions.
+1. Use public keys on an online computer to create the transactions. Store them
+   on a USB stick with encrypted private keys.
 
-2. Open an offline computer running CryptOS from a USB stick. The private keys
-   or the wallet are (encrypted) on another USB stick.
+2. Open an offline computer running CryptOS from another USB stick.
 
 3. Read and sign the transactions on CryptOS.
 
