@@ -33,6 +33,14 @@ with lib;
   # Add Memtest86+ to the CD.
   #boot.loader.grub.memtest86.enable = true;
 
+  # Disable networking
+  networking = {
+    networkmanager.enable = false;
+    wireless.enable = false;
+    useDHCP = false;
+    interfaces = {};
+  };
+
   # Allow the user to log in as root without a password.
   users.extraUsers.root.initialHashedPassword = "";
 
