@@ -21,13 +21,13 @@ These are just a preliminary sketch and there are also other ways to use:
 2. Open an offline computer running CryptOS with the private keys or the wallet
    encrypted on a USB stick.
 
-3. Sign the transactions on CryptOS, save to the USB stick.
+3. Sign the transactions on CryptOS.
 
-4. Optionally, check the transaction using some application on your online
-   computer or mobile phone. If you do this, you don't basically need to trust
-   CryptOS.
+4. Copy the signed transaction to some online device by using a USB stick or by
+   scanning the QR code.
 
-5. Broadcast the transaction on the online computer.
+5. Check the transaction data (so you don't need to trust CryptOS) and broadcast
+   it.
 
 NOTE: The private keys can be stored encrypted on the online computer and
 multiple places for backup, but never decrypt them on an online computer. Only
@@ -38,7 +38,7 @@ decrypt on the offline computer.
 
 Available cryptocurrency applications:
 
-- Electrum
+- Bitcoin Electrum
 - Monero command-line wallet
 - more to come...
 
