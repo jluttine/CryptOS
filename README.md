@@ -39,6 +39,8 @@ decrypt on the offline computer.
 Available cryptocurrency applications:
 
 - Bitcoin Electrum
+- Bitcoin Cash Electron
+- Litecoin Electrum
 - Monero command-line wallet
 - more to come...
 

@@ -4,7 +4,7 @@
 let
   # Version ID contains the commit ID of this repo and the version ID of NixOS.
   gitCommitId  = lib.substring 0 7 (lib.commitIdFromGitRepo ./.git);
-  version = "0.0.git.${gitCommitId}-${config.system.nixosVersion}";
+  version = "0.1.git.${gitCommitId}-${config.system.nixosVersion}";
 in
 {
   imports = [
@@ -17,11 +17,7 @@ in
 
   ];
 
-
-  #system.nixosLabel = "${gitCommitId}-${config.system.nixosVersion}";
   # ISO naming.
-  #isoImage.isoBaseName = "cryptos";
-  #isoImage.isoName = "${config.isoImage.isoBaseName}-${config.system.nixosLabel}-${pkgs.stdenv.system}.iso";
   isoImage.isoName = "cryptos-${version}-${pkgs.stdenv.system}.iso";
   isoImage.volumeID = lib.substring 0 11 "CRYPTOS_ISO";
   isoImage.appendToMenuLabel = " Live System";
@@ -29,6 +25,11 @@ in
   # EFI and USB booting
   isoImage.makeEfiBootable = true;
   isoImage.makeUsbBootable = true;
+
+  isoImage.splashImage = pkgs.fetchurl {
+    url = https://raw.githubusercontent.com/NixOS/nixos-artwork/5729ab16c6a5793c10a2913b5a1b3f59b91c36ee/ideas/grub-splash/grub-nixos-1.png;
+    sha256 = "43fd8ad5decf6c23c87e9026170a13588c2eba249d9013cb9f888da5e2002217";
+  };
 
   services.xserver = {
     enable = true;
@@ -65,11 +66,6 @@ in
   # Allow the user to log in as root without a password.
   users.extraUsers.root.initialHashedPassword = "";
 
-  isoImage.splashImage = pkgs.fetchurl {
-    url = https://raw.githubusercontent.com/NixOS/nixos-artwork/5729ab16c6a5793c10a2913b5a1b3f59b91c36ee/ideas/grub-splash/grub-nixos-1.png;
-    sha256 = "43fd8ad5decf6c23c87e9026170a13588c2eba249d9013cb9f888da5e2002217";
-  };
-
   # Generate /etc/os-release.  See
   # https://www.freedesktop.org/software/systemd/man/os-release.html for the
   # format.
@@ -85,6 +81,8 @@ in
 
   environment.systemPackages = with pkgs; [
     electrum
+    electron-cash
+    electrum-ltc
     monero
   ];
 
