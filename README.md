@@ -47,7 +47,7 @@ Available cryptocurrency applications:
 It is recommended to build the ISO image yourself. You can easily even modify
 `iso.nix` to suit your needs. But if you want, you can download a pre-built ISO
 image from Releases section.
- 
+
 Requirement: nix installed.
 
 Clone this repo and inside the directory, run:
@@ -65,6 +65,15 @@ sudo dd bs=4M if=result/iso/<ISO-FILE-NAME> of=/dev/<USB-DEVICE-ID>
 
 TODO: How to force building all packages from sources? Would it improve
 security in some way?
+
+
+You can test the built ISO file in a virtual machine. For instance:
+
+```
+nix-shell -p qemu_kvm
+qemu-img create -f qcow2 foo.img 20G
+qemu-kvm -m 1024 -drive file=foo.img -drive file=result/iso/<ISO-FILE-NAME>,format=raw,media=cdrom
+```
 
 
 ## TODO
