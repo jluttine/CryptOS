@@ -73,7 +73,7 @@ in
   # Generate /etc/os-release.  See
   # https://www.freedesktop.org/software/systemd/man/os-release.html for the
   # format.
-  environment.etc."os-release".text =
+  environment.etc."os-release".text = lib.mkForce
     ''
       NAME=CryptOS
       ID=cryptos
