@@ -1,29 +1,30 @@
-# CryptOS: Live OS for cryptocurrencies
+# CryptOS: Secure live offline OS for cryptocurrencies
 
-- Live operating system (run from DVD or USB stick).
+- Run directly from a DVD or USB stick securely without internet
+  connection.
 
-- Relevant tools for cryptocurrencies available.
+- Includes relevant tools for cryptocurrencies.
 
-- Use on an offline computer.
+- Inspired by [BitKey](https://bitkey.io/).
 
-- Inspired by BitKey.
+- Based on the amazing [NixOS](https://nixos.org/). CryptOS is just NixOS with a
+  specific configuration.
 
-- Based on the amazing NixOS.
+- Runs [KDE](https://www.kde.org/) by default.
 
-- Runs KDE by default.
 
 ## Instructions
 
-These are just a preliminary sketch and there are also other ways to use:
+These steps provide preliminary sketcing of one way to use CryptOS:
 
 1. Use public keys on an online computer to create the transactions.
 
-2. Open an offline computer running CryptOS with the private keys or the wallet
-   encrypted on a USB stick.
+2. Open an offline computer running CryptOS from a USB stick. The private keys
+   or the wallet are (encrypted) on another USB stick.
 
-3. Sign the transactions on CryptOS.
+3. Read and sign the transactions on CryptOS.
 
-4. Copy the signed transaction to some online device by using a USB stick or by
+4. Copy the signed transaction to some online device by using the USB stick or by
    scanning the QR code.
 
 5. Check the transaction data (so you don't need to trust CryptOS) and broadcast
@@ -38,11 +39,12 @@ decrypt on the offline computer.
 
 Available cryptocurrency applications:
 
-- Bitcoin Electrum
-- Bitcoin Cash Electron
-- Litecoin Electrum
-- Monero command-line wallet
+- [Bitcoin Electrum](https://electrum.org/)
+- [Bitcoin Cash Electron](https://electroncash.org/)
+- [Litecoin Electrum](https://electrum-ltc.org/)
+- [Monero command-line wallet](https://getmonero.org/)
 - more to come...
+
 
 ## Building
 
@@ -52,24 +54,21 @@ image from Releases section.
 
 Requirement: nix installed.
 
-Clone this repo and inside the directory, run:
+Clone this repo:
+
+```
+git clone https://github.com/jluttine/CryptOS.git
+cd CryptOS
+```
+
+Build the ISO image:
 
 ```
 nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=iso.nix
 ```
 
-The ISO image can be found in `result/iso/`. Unmount the device you want to
-flash the image into. Flash the image to a USB stick:
-
-```
-sudo dd bs=4M if=result/iso/<ISO-FILE-NAME> of=/dev/<USB-DEVICE-ID>
-```
-
-TODO: How to force building all packages from sources? Would it improve
-security in some way?
-
-
-You can test the built ISO file in a virtual machine. For instance:
+The ISO image can be found in `result/iso/`. You can test the built ISO file in
+a virtual machine. For instance:
 
 ```
 nix-shell -p qemu_kvm
@@ -77,11 +76,22 @@ qemu-img create -f qcow2 foo.img 20G
 qemu-kvm -m 1024 -drive file=foo.img -drive file=result/iso/<ISO-FILE-NAME>,format=raw,media=cdrom
 ```
 
+Unmount the device you want to flash the image into. Flash the image to a USB
+stick:
+
+```
+sudo dd bs=4M if=result/iso/<ISO-FILE-NAME> of=/dev/<USB-DEVICE-ID>
+```
+
 
 ## TODO
 
-- Disable internet interfaces.
-
 - Add relevant packages. If something is missing from nixpkgs, contribute to upstream.
+
+- How to force building all packages from sources? Would it improve security in
+  some way?
+
+
+## Contributing
 
 Contributions are most welcome! Just open issues or make pull requests.
