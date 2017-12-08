@@ -79,10 +79,17 @@ in
     '';
 
   environment.systemPackages = with pkgs; [
+
+    # Cryptocurrency wallets
     electrum
     electron-cash
     electrum-ltc
     monero
+
+    # Support for various encryption tools
+    gnupg
+    cryptsetup
+
   ];
 
 }
