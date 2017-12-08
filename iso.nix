@@ -41,10 +41,9 @@ in
       autoLogin = true;
     };
 
-    # Use KDE
-    desktopManager.plasma5 = {
+    # Use XFCE
+    desktopManager.xfce = {
       enable = true;
-      enableQt4Support = false;
     };
 
     # Enable touchpad support for many laptops.

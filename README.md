@@ -10,7 +10,7 @@
 - Based on the amazing [NixOS](https://nixos.org/). CryptOS is just NixOS with a
   specific configuration.
 
-- Runs [KDE](https://www.kde.org/) by default.
+- Runs [XFCE](https://xfce.org/) by default.
 
 
 ## Instructions
