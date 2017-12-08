@@ -87,6 +87,9 @@ in
     electrum-ltc
     monero
 
+    # Useful utilities
+    zbar
+
     # Support for various encryption tools
     gnupg
     cryptsetup
