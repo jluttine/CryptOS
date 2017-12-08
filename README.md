@@ -67,6 +67,12 @@ Build the ISO image:
 nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=iso.nix
 ```
 
+To build 32-bit ISO image on 64-bit system:
+
+```
+nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=iso.nix --argstr system i686-linux
+```
+
 The ISO image can be found in `result/iso/`. You can test the built ISO file in
 a virtual machine. For instance:
 
