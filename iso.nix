@@ -41,8 +41,9 @@ in
       autoLogin = true;
     };
 
-    # Use XFCE
+    # Use LXQt or XFCE
     desktopManager.xfce = {
+    #desktopManager.lxqt = {
       enable = true;
     };
 
