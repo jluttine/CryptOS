@@ -109,15 +109,56 @@ risk.
 
 Contributions are most welcome! Just open issues or make pull requests.
 
+
 ## Usage
 
 In general, keep view keys in an online computer and spend keys (encrypted) in
 some USB stick so the offline live CryptOS can read the spend keys and sign
 transactions.
 
+
+### Bitcoin (Electrum)
+
+#### Create a transaction (online computer)
+
+1. Start Electrum.
+
+2. Create the transaction in Send tab, press Preview and Save the unsigned
+   transaction to a USB stick (or save elsewhere and then copy to a USB stick).
+   Note that Electrum uses mBTC (milli-bitcoin) units. Remove the USB stick.
+
+#### Sign the transaction (offline live CryptOS)
+
+1. Start Electrum ("Applications" -> "Internet" -> "Electrum Bitcoin Wallet").
+   For the start-up wizard choose auto-connecting to a server and browse your
+   spend wallet file from a USB stick (this might be a different USB stick than
+   the one with the transaction file).
+
+2. Load the transaction by selecting "Tools" -> "Load transaction" -> "From
+   file" from menu and choosing the unsigned transaction file from the USB stick
+   (or copy the file from the USB stick elsewhere and load that file).
+
+3. Check that the transaction is correct and then sign it by pressing "Sign" and
+   entering the wallet password.
+
+4. Save the signed transaction to the USB stick by choosing "Save" and remove
+   the USB stick.
+
+#### Broadcast the transaction (online computer)
+
+1. Load the signed transaction by choosing "Tools" -> "Load transaction" ->
+   "From file" from Electrum menu and choosing the signed transaction file from
+   the USB stick (or, again, first copy the file from the USB elsewhere and then
+   load that file).
+
+2. Check that the signed transaction file is still correct.
+
+3. Broadcast the transaction by choosing "Broadcast".
+
+
 ### Monero
 
-#### Create transaction (online computer)
+#### Create a transaction (online computer)
 
 1. Start `monero-wallet-cli --daemon-address node.moneroworld.com:18089` from
    the command line.
