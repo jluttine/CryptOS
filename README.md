@@ -123,6 +123,10 @@ transactions.
 
 TODO
 
+#### Set up a view-only wallet (online computer)
+
+TODO
+
 #### Create a transaction (online computer)
 
 1. Start Electrum.
@@ -163,6 +167,10 @@ TODO
 ### Monero
 
 #### Create a spend wallet (offline live CryptOS)
+
+TODO
+
+#### Set up a view-only wallet (online computer)
 
 TODO
 
