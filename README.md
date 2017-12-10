@@ -119,6 +119,10 @@ transactions.
 
 ### Bitcoin (Electrum)
 
+#### Create a wallet (offline live CryptOS)
+
+TODO
+
 #### Create a transaction (online computer)
 
 1. Start Electrum.
@@ -157,6 +161,10 @@ transactions.
 
 
 ### Monero
+
+#### Create a spend wallet (offline live CryptOS)
+
+TODO
 
 #### Create a transaction (online computer)
 
