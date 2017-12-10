@@ -112,6 +112,11 @@ Contributions are most welcome! Just open issues or make pull requests.
 
 ## Usage
 
+**NOTE:** On old computers, one may need to use 32-bit version and also enter
+`forcepae` kernel option during boot time. If you need to add `forcepae` option,
+press Tab when distro options are listed after boot and then append ` forcepae`
+to the string.
+
 In general, keep view keys in an online computer and spend keys (encrypted) in
 some USB stick so the offline live CryptOS can read the spend keys and sign
 transactions.
