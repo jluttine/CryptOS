@@ -31,6 +31,10 @@ in
     sha256 = "43fd8ad5decf6c23c87e9026170a13588c2eba249d9013cb9f888da5e2002217";
   };
 
+  # This was needed on some old 32-bit computers, otherwise the boot fails. Not
+  # sure if this affects other computers badly?
+  boot.kernelParams = [ "forcepae" ];
+
   services.xserver = {
     enable = true;
 
