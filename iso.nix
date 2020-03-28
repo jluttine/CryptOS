@@ -54,7 +54,8 @@ in
     };
 
     # Enable touchpad support for many laptops.
-    synaptics.enable = true;
+    libinput.enable = true;
+    #synaptics.enable = true;
   };
 
   # Disable networking
