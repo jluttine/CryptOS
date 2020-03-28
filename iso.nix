@@ -35,10 +35,12 @@ in
     enable = true;
 
     # Automatically login as root.
-    displayManager.slim = {
+    displayManager.lightdm = {
       enable = true;
-      defaultUser = "root";
-      autoLogin = true;
+      autoLogin = {
+        enable = true;
+        user = "root";
+      };
     };
 
     # Use LXQt or XFCE
