@@ -64,8 +64,18 @@ cd CryptOS
 Build the ISO image:
 
 ```
+nix-build 'nixos.nix' -A config.system.build.isoImage -I nixos-config=iso.nix
+```
+
+If you don't want to use the pinned version of NixOS and nixpkgs, and want to
+use the nixpkgs of your own system:
+
+```
 nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=iso.nix
 ```
+
+Also, it is possible to to just provide path to your locally checked out
+nixpkgs: `/path/to/nixpkgs/nixos`.
 
 To build 32-bit ISO image on 64-bit system:
 
