@@ -88,6 +88,7 @@ in
     electron-cash
     electrum-ltc
     monero
+    monero-gui
 
     # Useful utilities
     zbar
