@@ -2,9 +2,9 @@
 # contain any graphical stuff.
 {lib, config, pkgs, ...}:
 let
-  # Version ID contains the commit ID of this repo and the version ID of NixOS.
+  # Version ID contains the commit ID of this repo.
   gitCommitId  = lib.substring 0 7 (lib.commitIdFromGitRepo ./.git);
-  version = "0.1.git.${gitCommitId}-${config.system.nixosVersion}";
+  version = "0.1.git.${gitCommitId}";
 in
 {
   imports = [
