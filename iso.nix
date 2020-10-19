@@ -35,15 +35,31 @@ in
   # sure if this affects other computers badly?
   boot.kernelParams = [ "forcepae" ];
 
+  security.sudo.wheelNeedsPassword = false;
+  users.users = {
+    root = {
+      password = null;
+    };
+    cryptos = {
+      description = "CryptOS User";
+      isNormalUser = true;
+      extraGroups = [ "wheel" ];
+      password = "";
+    };
+  };
+
   services.xserver = {
     enable = true;
 
-    # Automatically login as root.
+    # With LightDM, rendering in XFCE was totally broken. All kinds of errors
+    # making it unusable.
+    #displayManager.sddm = {
     displayManager.lightdm = {
       enable = true;
+      # Automatically log in
       autoLogin = {
         enable = true;
-        user = "root";
+        user = "cryptos";
       };
     };
 
@@ -69,9 +85,6 @@ in
   # KDE complains if power management is disabled (to be precise, if
   # there is no power management backend such as upower).
   powerManagement.enable = true;
-
-  # Allow the user to log in as root without a password.
-  users.extraUsers.root.initialHashedPassword = "";
 
   # Generate /etc/os-release.  See
   # https://www.freedesktop.org/software/systemd/man/os-release.html for the
