@@ -146,9 +146,15 @@ TODO
 
 1. Start Electrum.
 
-2. Create the transaction in Send tab, press Preview and Save the unsigned
-   transaction to a USB stick (or save elsewhere and then copy to a USB stick).
-   Note that Electrum uses mBTC (milli-bitcoin) units. Remove the USB stick.
+2. Create the transaction in "Send" tab and press "Pay". Note that Electrum uses
+   mBTC (milli-bitcoin) units.
+
+3. Fee dialog opens, choose the transaction fee and click "Send".
+
+4. A window showing the transaction pops up. Choose "Export" -> "Export to
+   file". Choose ".txn" file type, not ".psbt", and save the file to the USB
+   stick (or save elsewhere and then copy to a USB stick). Safely remove the USB
+   stick.
 
 #### Sign the transaction (offline live CryptOS)
 
