@@ -4,6 +4,7 @@
 let
   # Version ID contains the commit ID of this repo.
   gitCommitId  = lib.substring 0 7 (lib.commitIdFromGitRepo ./.git);
+  # Get this version with `git describe --tags` somehow.
   version = "0.2.git.${gitCommitId}";
 in
 {
