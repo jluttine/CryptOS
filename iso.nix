@@ -51,20 +51,26 @@ in
   services.xserver = {
     enable = true;
 
-    # With LightDM, rendering in XFCE was totally broken. All kinds of errors
-    # making it unusable.
-    #displayManager.sddm = {
-    displayManager.lightdm = {
-      enable = true;
+    displayManager = {
+
+      # With LightDM, rendering in XFCE was totally broken. All kinds of errors
+      # making it unusable.
+      sddm = {
+      #lightdm = {
+        enable = true;
+      };
+
       # Automatically log in
       autoLogin = {
         enable = true;
         user = "cryptos";
       };
+
     };
 
     # Use LXQt or XFCE
-    desktopManager.xfce = {
+    desktopManager.plasma5 = {
+    #desktopManager.xfce = {
     #desktopManager.lxqt = {
       enable = true;
     };
