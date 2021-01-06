@@ -99,6 +99,11 @@ in
       PRETTY_NAME="CryptOS ${version}"
     '';
 
+  # Enable GPG agent (includes pinentry too) for GPG encryption and decryption
+  programs = {
+    gnupg.agent.enable = true;
+  };
+
   environment.systemPackages = with pkgs; [
 
     # Cryptocurrency wallets
@@ -111,8 +116,7 @@ in
     # Useful utilities
     zbar
 
-    # Support for various encryption tools
-    gnupg
+    # Support LUKS encrypted USB sticks
     cryptsetup
 
   ];
