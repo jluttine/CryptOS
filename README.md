@@ -198,39 +198,41 @@ TODO
 
 #### Create a transaction (online computer)
 
-1. Start `monero-wallet-cli --daemon-address node.moneroworld.com:18089` from
+1. Start `monero-wallet-cli --daemon-address opennode.xmr-tw.org:18089` from
    the command line.
 
 2. Enter file path to the view wallet, for instance, `path/to/view-wallet`.
 
-3. Create a transaction, for instance, `transfer ADDRESS_HERE AMOUNT_HERE
+3. Export all outputs to a file: `export_outputs all monero_outputs`
+
+4. Create a transaction, for instance, `transfer ADDRESS_HERE AMOUNT_HERE
    PAYMENT_ID`. To move all funds, use `sweep_all ADDRESS_HERE PAYMENT_ID`.
-   Note that the payment ID might not be required if, for instance, sending
-   funds to yourself.
+   Note that the payment ID might not be required.
 
-4. The transaction is saved in `unsigned_monero_tx` file under the directory
-   you are running the Monero wallet.
-
-5. Copy the unsigned transaction file to a USB stick.
+5. Copy the outputs file `monero_outputs` and the unsigned transaction file
+   `unsigned_monero_tx` to a USB stick. The files are located under the
+   directory you are running the Monero wallet.
 
 #### Sign the transaction (offline live CryptOS)
 
-1. Copy the unsigned transaction file from the USB stick.
+1. Plug-in the USB stick(s) that contain the wallet file and the files created
+   on the online computer.
 
-2. Copy the spend wallet files from a USB stick (can be the same or a different
-   stick). Copy the two files `spend-wallet` and `spend-wallet.keys`, where
-   `spend-wallet` is replaced with the name of your wallet.
+2. Start `monero-wallet-cli` from the command line in the same directory where
+   you have the files from the online computer. Monero asks for the path to the
+   wallet file, so enter the path to the spend wallet, for instance,
+   `path/to/spend-wallet`.
 
-3. Start `monero-wallet-cli` from the command line in the same directory as the
-   wallet and transaction files are located.
+3. Import the outputs file: `import_outputs monero_outputs`
 
-4. Enter the name of the spend wallet file, for instance, `spend-wallet`.
+4. Sign the transaction file: `sign_transfer`
 
-5. Sign the transaction with `sign_transfer`.
+5. Export the key images to a file: `export_key_images all monero_key_images`
 
-6. Copy the signed transaction file `signed_monero_tx` to the USB stick.
+5. Copy the signed transaction file `signed_monero_tx` and the key images file
+   `monero_key_images` to the USB stick.
 
-7. Exit Monero wallet with `q` and shut down CryptOS. (Or shut down CryptOS only
+6. Exit Monero wallet with `q` and shut down CryptOS. (Or shut down CryptOS only
    after successfull broadcasting in case you need to make some fixes on
    CryptOS.)
 
@@ -239,7 +241,9 @@ TODO
 1. Copy the signed transaction file from the USB stick to the same directory
    you are running the Monero wallet.
 
-2. Broadcast the transaction with `submit_transfer`.
+2. Import the key images file: `import_key_images monero_key_images`
+
+2. Broadcast the transaction: `submit_transfer`
 
 3. Exit Monero wallet with `q`. Optionally, delete the signed and unsigned
    transaction files from your computer and the USB stick.
