@@ -198,8 +198,8 @@ TODO
 
 #### Create a transaction (online computer)
 
-1. Start `monero-wallet-cli --daemon-address opennode.xmr-tw.org:18089` from
-   the command line.
+1. Start `monero-wallet-cli --daemon-address opennode.xmr-tw.org:18089
+   --trusted-daemon` from the command line.
 
 2. Enter file path to the view wallet, for instance, `path/to/view-wallet`.
 
